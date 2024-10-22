@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import logo from "@/public/assets/image.png";
 import { motion } from "framer-motion";
 
 function SplashPop() {
