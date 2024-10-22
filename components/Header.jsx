@@ -5,6 +5,7 @@ import img2 from "@/public/assets/whitee.jpg";
 import avatar from "@/public/assets/user.jpg";
 import example from "@/public/assets/ex.jpg";
 import { supabase } from "@/lib/supabaseClient";
+import { ArrowUpRight } from "lucide-react";
 
 function Header() {
   const getProducts = async () => {
@@ -27,28 +28,36 @@ function Header() {
 
   return (
     <section className="mt-6 grid grid-cols-1 md:grid-cols-2 w-full min-h-[500px] gap-6">
-      <div className="relative bg-red-400 rounded-3xl">
+      <div className="relative h-[500px] bg-red-400 rounded-3xl">
         <Image
           src={img1}
           width={1000}
           height={1000}
           className="w-full h-full absolute object-cover rounded-3xl"
         />
-        <div className="w-full h-[200px] rounded-3xl absolute bottom-0 px-4 text-white flex flex-col gap-4">
+        <div className="w-full h-[200px] rounded-3xl absolute bottom-0 px-4 text-white flex flex-col gap-12">
+          <div className="flex flex-col gap-3">
+            {" "}
+            <span className="flex items-center gap-2">
+              <Image
+                src={avatar}
+                width={0}
+                height={0}
+                className="rounded-lg w-8 h-10 object-cover"
+              />
+              •<h1>Jane McGee</h1>
+            </span>
+            <span className="text-3xl font-medium">Artist of the week</span>
+          </div>
+
           <span className="flex items-center gap-2">
-            <Image
-              src={avatar}
-              width={0}
-              height={0}
-              className="rounded-lg w-8 h-10 object-cover"
-            />
-            •<h1>Jane McGee</h1>
+            Explore our virtual world
+            <ArrowUpRight />
           </span>
-          <span className="text-3xl font-medium">Artist of the week</span>
         </div>
       </div>
 
-      <div className="relative bg-blue-400 rounded-3xl">
+      <div className="relative h-[500px] bg-blue-400 rounded-3xl">
         <Image
           src={img2}
           width={1000}
@@ -56,13 +65,13 @@ function Header() {
           className="w-full h-full absolute object-cover rounded-3xl"
         />
 
-        <div className="w-full rounded-3xl absolute top-10 flex flex-col gap-8 lg:gap-16">
+        <div className="w-full  rounded-3xl absolute top-10 flex flex-col gap-28 lg:gap-20">
           <div className="px-10 flex flex-col gap-10">
-            <h1 className="text-sm lg:text-3xl xl:text-4xl font-semibold text-black leading-normal">
+            <h1 className=" text-2xl xl:text-4xl font-semibold text-black leading-normal">
               ACCESS TO HIGH-QUALITY, ECO-FRIENDLY ♦ PRODUCTS AND SERVICES
             </h1>
 
-            <span className="hidden lg:block">
+            <span className="">
               <h1 className="text-sm text-black font-semibold">
                 Try it on or buy the look
                 <p className="text-xs text-gray-500 font-medium">
