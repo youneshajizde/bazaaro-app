@@ -1,14 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Apply the Parisienne font to the logo text */
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
-
-/* You can also apply it to specific elements */
+.logo-text {
+  font-family: "Nunito", sans-serif !important; /* Add !important to enforce */
+}
+.slick-slide {
+  display: flex; /* Ensure the slides are displayed as flex items */
+  justify-content: center; /* Center slides */
+}
 h1,
 h2,
 h3 {

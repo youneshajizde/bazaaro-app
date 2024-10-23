@@ -1,7 +1,8 @@
 "use client";
 
-import Header from "@/components/Header";
+import Header from "@/components/header/Header";
 import Navbar from "@/components/Navbar";
+import Shop from "@/components/Shop";
 import SplashPop from "@/components/SplashPop";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -33,8 +34,9 @@ export default function Home() {
   return (
     <main>
       <Navbar />
-      <div className="w-[90%] mx-auto">
+      <div className="w-[90%] mx-auto flex flex-col space-y-28">
         <Header />
+        <Shop />
       </div>
     </main>
   );

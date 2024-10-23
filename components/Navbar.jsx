@@ -5,13 +5,14 @@ import pfp from "@/public/assets/pfp1.jpg";
 import { Input } from "./ui/input";
 import { Heart, Search, ShoppingBag } from "lucide-react";
 import { DropdownMenuCheckboxes } from "./ProfileMenu";
+
 function Navbar() {
   return (
     <section className=" w-full h-[80px] py-4 px-16 flex items-center justify-between ">
       <div className="flex items-center gap-10">
         <span className="flex items-center gap-2">
           <Image src={logo} width={30} height={30} />
-          <h1 className="font-medium">BÀAZARO</h1>
+          <h1 className="font-semibold logo-text">BÀAZARO</h1>
         </span>
         <div className="w-[500px] bg-gray-100 rounded-3xl flex items-center gap-1 px-2">
           <Search className="text-gray-400" />
