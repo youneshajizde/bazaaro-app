@@ -14,13 +14,13 @@ function RightHeader() {
   };
 
   const settings = {
-    dots: true,
     infinite: true,
-    speed: 100,
     slidesToShow: 3,
-    slidesToScroll: 3,
-    centerMode: true, // Enable centered mode for better spacing
-    centerPadding: "40px", // Add padding around the centered item
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 2500,
+    cssEase: "linear",
   };
 
   const getProducts = async () => {
@@ -46,16 +46,23 @@ function RightHeader() {
   }, []);
 
   const items = discountedProducts?.map((product, index) => (
-    <div key={index} className="flex bg-white mx-2">
-      {/* <Image
-        src={example}
-        width={100}
-        height={100}
-        className="object-cover rounded-xl w-10 h-20 lg:w-24 lg:h-24"
-      /> */}
-      <div className="information flex flex-col justify-between ml-2">
+    <div
+      key={index}
+      className="bg-white !flex gap-2  p-1 rounded-xl shadow-lg mx-2" // Use Tailwind for styling
+    >
+      <div className="picture">
+        <Image
+          src={example}
+          width={100}
+          height={100}
+          className="object-cover rounded-xl w-16 h-20" // Ensure width and height match for consistent layout
+          alt="Product"
+        />
+      </div>
+
+      <div className="information !flex !flex-col !justify-between ml-2 ">
         <h1 className="font-medium text-sm lg:text-normal">{product?.title}</h1>
-        <p className="flex flex-col gap-1 text-xs font-medium">
+        <p className="flex flex-col justify-between text-xs font-medium">
           {discountedPrice(product?.discount, product?.price)}.00$
           <span className="font-normal text-gray-500">
             {product?.price}.00$
@@ -77,7 +84,8 @@ function RightHeader() {
       <div className="w-full rounded-3xl absolute top-10 flex flex-col gap-8 lg:gap-20">
         <div className="px-10 flex flex-col gap-10">
           <h1 className="text-2xl xl:text-4xl font-semibold text-black leading-normal">
-            ACCESS TO HIGH-QUALITY, ECO-FRIENDLY ♦ PRODUCTS AND SERVICES
+            ACCESS TO HIGH-QUALITY, ECO-FRIENDLY{" "}
+            <span className="text-orange-300">♦</span> PRODUCTS AND SERVICES
           </h1>
 
           <span className="">
@@ -89,10 +97,7 @@ function RightHeader() {
             </h1>
           </span>
         </div>
-        <Slider className="w-full" {...settings}>
-          {items}
-        </Slider>{" "}
-        {/* Pass items here */}
+        <Slider {...settings}>{items}</Slider>
       </div>
     </div>
   );
