@@ -2,7 +2,7 @@
 
 import Header from "@/components/header/Header";
 import Navbar from "@/components/Navbar";
-import Shop from "@/components/Shop";
+import Shop from "@/components/shop/Shop";
 import SplashPop from "@/components/SplashPop";
 import Image from "next/image";
 import { useEffect, useState } from "react";

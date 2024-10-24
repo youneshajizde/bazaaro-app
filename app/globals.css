@@ -25,7 +25,12 @@ h3 {
 body {
   font-family: var(--font-inter), sans-serif;
 }
-
+.slick-slide > div {
+  display: flex !important; /* Ensures that each slide maintains a flex layout */
+  flex-direction: row !important; /* Ensures row direction inside the slides */
+  justify-content: space-between;
+  align-items: center;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;
