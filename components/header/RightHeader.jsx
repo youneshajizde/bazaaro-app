@@ -52,7 +52,7 @@ function RightHeader() {
     >
       <div className="picture">
         <Image
-          src={example}
+          src={product?.images?.[0]}
           width={100}
           height={100}
           className="object-cover rounded-xl w-16 h-20" // Ensure width and height match for consistent layout
