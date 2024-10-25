@@ -1,113 +1,80 @@
-import React from "react";
-import { Switch } from "../ui/switch";
-import { Label } from "../ui/label";
-import { Button } from "../ui/button";
-import Image from "next/image";
-import img from "@/public/assets/p.jpg";
-import img1 from "@/public/assets/p1.jpg";
-import ex from "@/public/assets/ex.jpg";
-import es from "@/public/assets/es.jpg";
+import React, { useEffect, useState } from "react";
+import SpecialOffers from "./SpecialOffers";
+import Clothings from "./Clothings";
+import ShopLabel from "./ShopLabel";
+import RandomProducts from "./RandomProducts";
+import { supabase } from "@/lib/supabaseClient";
+import { MutatingDots } from "react-loader-spinner";
 function Shop() {
+  const [specialOffers, setSpecialOffers] = useState();
+  const [shoesOffers, setShoesOffers] = useState();
+  const [randomProducts, setRandomProducts] = useState();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState();
+
+  const specialProducts = async () => {
+    try {
+      const { data: specialOffersData, error: specialError } = await supabase
+        .from("products")
+        .select("*")
+        .eq("special", true);
+      const { data: shoesData, error: shoesError } = await supabase
+        .from("products")
+        .select("*")
+        .eq("tag", "shoes");
+
+      const { data: woodenData, error: woodenError } = await supabase
+        .from("products")
+        .select("*")
+        .eq("tag", "wooden");
+
+      if (specialError || woodenError || shoesError) {
+        console.log(specialError || woodenError || shoesError);
+      } else {
+        console.log("special Offers : ", specialOffersData);
+        const randomShoe =
+        shoesData[Math.floor(Math.random() * shoesData.length)];
+        console.log("Random shoe:", randomShoe);
+        console.log("wooden", woodenData);
+        setSpecialOffers(specialOffersData);
+        setShoesOffers(randomShoe);
+        setRandomProducts(woodenData);
+      }
+    } catch (error) {
+      console.log(error);
+      setError("failed to fetch the data");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    specialProducts();
+  }, []);
+
+  if (loading)
+    return (
+      <MutatingDots
+        visible={true}
+        height="100"
+        width="100"
+        color="#4fa94d"
+        secondaryColor="#4fa94d"
+        radius="12.5"
+        ariaLabel="mutating-dots-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+      />
+    );
+
   return (
     <section>
-      <div className="flex items-center justify-between ">
-        <h1 className="text-2xl font-semibold">Shop</h1>
+      <ShopLabel />
 
-        <span className="flex items-center gap-3">
-          <Button className="bg-transparent rounded-full border-[1px] border-black text-black hover:bg-black hover:text-white">
-            Best Seller
-          </Button>
-          <Button className="bg-transparent rounded-full border-[1px] border-black text-black hover:bg-black hover:text-white">
-            Trending
-          </Button>
-          <Button className="bg-transparent rounded-full border-[1px] border-black text-gray-500 hover:bg-black hover:text-white ">
-            Empathy
-          </Button>
-        </span>
-
-        <div className="flex items-center space-x-2">
-          <Switch id="airplane-mode" />
-          <Label htmlFor="airplane-mode">Local Sellers</Label>
-        </div>
-      </div>
-
-      <div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full h-[550px] gap-10 mt-8"
-        style={{ gridTemplateColumns: "1fr 1.5fr 1fr" }}
-      >
-        <div className=" h-full bg-gray-100 flex flex-col space-y-10 justify-end p-2 rounded-2xl">
-          <h1 className="text-center font-medium text-xl">Special Offers</h1>
-          <div className="bg-white w-full h-[390px] rounded-2xl relative p-2">
-            <Image
-              src={img}
-              width={0}
-              height={0}
-              className="  object-cover h-[75%] rounded-2xl"
-            />
-
-            <div className="mt-3 flex flex-col space-y-4">
-              <span className="w-20 flex justify-center hover:bg-black hover:text-white text-xs rounded-full border-[1px] px-2 py-1 border-black font-medium">
-                clothings
-              </span>
-
-              <h1 className="font-medium">Mirkwood capiche</h1>
-            </div>
-          </div>
-        </div>
-        <div className=" rounded-2xl w-full h-full ">
-          <div className="  w-full h-[85%] relative">
-            <Image
-              src={img1}
-              width={0}
-              height={0}
-              className="absolute w-full h-full object-cover rounded-2xl"
-            />
-          </div>
-          <div className="mt-3 flex flex-col space-y-4">
-            <span className="w-20 flex justify-center hover:bg-black hover:text-white text-xs rounded-full border-[1px] px-2 py-1 border-black font-medium">
-              clothings
-            </span>
-
-            <h1 className="font-medium">Mirkwood capiche</h1>
-          </div>
-        </div>
-
-        <div className=" h-full flex flex-col space-y-7">
-          <div className=" h-1/2">
-            <div className="w-full h-[75%] relative rounded-2xl">
-              <Image
-                src={ex}
-                width={1000}
-                height={1000}
-                className="w-full h-full object-cover absolute rounded-2xl"
-              />
-            </div>
-            <div className="mt-3 flex flex-col space-y-4">
-              <span className="w-20 flex justify-center hover:bg-black hover:text-white text-xs rounded-full border-[1px] px-2 py-1 border-black font-medium">
-                clothings
-              </span>
-
-              <h1 className="font-medium">Mirkwood capiche</h1>
-            </div>
-          </div>
-          <div className=" h-1/2">
-            <div className="w-full h-[75%] relative rounded-2xl">
-              <Image
-                src={es}
-                width={1000}
-                height={1000}
-                className="w-full h-full object-cover absolute rounded-2xl"
-              />
-            </div>
-            <div className="mt-3 flex flex-col space-y-4">
-              <span className="w-20 flex justify-center hover:bg-black hover:text-white text-xs rounded-full border-[1px] px-2 py-1 border-black font-medium">
-                clothings
-              </span>
-
-              <h1 className="font-medium">Mirkwood capiche</h1>
-            </div>
-          </div>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full h-auto gap-10 mt-8">
+        <SpecialOffers data={specialOffers} />
+        <Clothings data={shoesOffers} />
+        <RandomProducts />
       </div>
     </section>
   );
