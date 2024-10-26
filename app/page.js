@@ -1,5 +1,6 @@
 "use client";
 
+import Advertise from "@/components/Advertise";
 import Header from "@/components/header/Header";
 import Navbar from "@/components/Navbar";
 import Shop from "@/components/shop/Shop";
@@ -38,6 +39,7 @@ export default function Home() {
         <Header />
         <Shop />
       </div>
+      <Advertise />
     </main>
   );
 }

@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 function Clothings({ data }) {
-  
-  const videoUrl = data.find()
+  const videoUrl = data?.images?.find(
+    (product) => product?.type === "video"
+  )?.url;
+
+  console.log(videoUrl);
 
   return (
-    <div className="relative rounded-2xl w-full h-full overflow-hidden">
+    <div className="relative block rounded-2xl w-full h-full">
       <div className="w-full h-full relative">
         <video
-          src={data?.images?.[1]?.url}
+          src={videoUrl}
           autoPlay
           loop
           muted
