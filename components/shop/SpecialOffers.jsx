@@ -16,10 +16,7 @@ function SpecialOffers({ data }) {
   };
 
   const items = data?.map((product, index) => (
-    <div
-      key={index}
-      className="bg-white w-full h-[390px] rounded-2xl relative p-2"
-    >
+    <div key={index} className="card bg-white w-full  rounded-2xl relative p-2 h-full">
       <Image
         src={product?.images?.[0]?.url}
         width={0}

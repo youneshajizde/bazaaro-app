@@ -20,7 +20,7 @@ function ShopLabel() {
         </Button>
       </span>
 
-      <div className="flex items-center space-x-2">
+      <div className="hidden md:flex items-center space-x-2 ">
         <Switch id="airplane-mode" />
         <Label htmlFor="airplane-mode">Local Sellers</Label>
       </div>

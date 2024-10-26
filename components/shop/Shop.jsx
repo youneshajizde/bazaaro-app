@@ -8,7 +8,7 @@ import { MutatingDots } from "react-loader-spinner";
 function Shop() {
   const [specialOffers, setSpecialOffers] = useState();
   const [shoesOffers, setShoesOffers] = useState();
-  const [randomProducts, setRandomProducts] = useState();
+  const [woodenProducts, setWoodenProducts] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
 
@@ -26,19 +26,20 @@ function Shop() {
       const { data: woodenData, error: woodenError } = await supabase
         .from("products")
         .select("*")
-        .eq("tag", "wooden");
+        .eq("tag", "wooden")
+        .limit(2);
 
       if (specialError || woodenError || shoesError) {
         console.log(specialError || woodenError || shoesError);
       } else {
         console.log("special Offers : ", specialOffersData);
         const randomShoe =
-        shoesData[Math.floor(Math.random() * shoesData.length)];
+          shoesData[Math.floor(Math.random() * shoesData.length)];
         console.log("Random shoe:", randomShoe);
         console.log("wooden", woodenData);
         setSpecialOffers(specialOffersData);
         setShoesOffers(randomShoe);
-        setRandomProducts(woodenData);
+        setWoodenProducts(woodenData);
       }
     } catch (error) {
       console.log(error);
@@ -71,10 +72,10 @@ function Shop() {
     <section>
       <ShopLabel />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full h-auto gap-10 mt-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-10 mt-8 min-h-[500px]">
         <SpecialOffers data={specialOffers} />
         <Clothings data={shoesOffers} />
-        <RandomProducts />
+        <RandomProducts data={woodenProducts} />
       </div>
     </section>
   );
