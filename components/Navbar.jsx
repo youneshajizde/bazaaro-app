@@ -12,7 +12,7 @@ function Navbar() {
       <div className="flex items-center gap-10">
         <span className="flex items-center gap-2">
           <Image src={logo} width={30} height={30} />
-          <h1 className="font-semibold logo-text">BÀAZARO</h1>
+          <h1 className="font-semibold logo-text logo-text">BÀAZARO</h1>
         </span>
         <div className="w-[500px] bg-gray-100 rounded-3xl flex items-center gap-1 px-2">
           <Search className="text-gray-400" />

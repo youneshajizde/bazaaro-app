@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import ex from "@/public/assets/ex.jpg";
-import es from "@/public/assets/es.jpg";
+
 function RandomProducts({ data }) {
   const items = data?.map((product) => (
     <div className="h-1/2">
