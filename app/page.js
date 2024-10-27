@@ -3,6 +3,7 @@
 import Advertise from "@/components/Advertise";
 import Header from "@/components/header/Header";
 import Navbar from "@/components/Navbar";
+import Products from "@/components/products/Products";
 import Shop from "@/components/shop/Shop";
 import SplashPop from "@/components/SplashPop";
 import Image from "next/image";
@@ -40,6 +41,10 @@ export default function Home() {
         <Shop />
       </div>
       <Advertise />
+
+      <div className="w-[90%] mx-auto flex flex-col space-y-28">
+        <Products />
+      </div>
     </main>
   );
 }

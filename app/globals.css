@@ -1,6 +1,8 @@
 @import "~slick-carousel/slick/slick.css";
 @import "~slick-carousel/slick/slick-theme.css";
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Satisfy&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -13,10 +15,16 @@
     text-wrap: balance;
   }
 }
-.logo-text {
+/* .logo-text {
   font-family: "Nunito", sans-serif !important; /* Add !important to enforce */
+
+.logo-text {
+  font-family: "Pacifico", "Satisfy", cursive;
 }
 
+.logos-text {
+  font-family: 'Courgette', cursive;
+}
 h1,
 h2,
 h3 {
