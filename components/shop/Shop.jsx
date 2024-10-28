@@ -32,11 +32,9 @@ function Shop() {
       if (specialError || woodenError || shoesError) {
         console.log(specialError || woodenError || shoesError);
       } else {
-        console.log("special Offers : ", specialOffersData);
         const randomShoe =
           shoesData[Math.floor(Math.random() * shoesData.length)];
-        console.log("Random shoe:", randomShoe);
-        console.log("wooden", woodenData);
+
         setSpecialOffers(specialOffersData);
         setShoesOffers(randomShoe);
         setWoodenProducts(woodenData);
@@ -55,17 +53,19 @@ function Shop() {
 
   if (loading)
     return (
-      <MutatingDots
-        visible={true}
-        height="100"
-        width="100"
-        color="#4fa94d"
-        secondaryColor="#4fa94d"
-        radius="12.5"
-        ariaLabel="mutating-dots-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
-      />
+      <div className="flex items-center justify-center">
+        <MutatingDots
+          visible={true}
+          height="100"
+          width="100"
+          color="#FFA500"
+          secondaryColor="#FFA500"
+          radius="12.5"
+          ariaLabel="mutating-dots-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+        />
+      </div>
     );
 
   return (
