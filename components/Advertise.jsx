@@ -34,8 +34,8 @@ function Advertise() {
         </div>
 
         <span className="flex items-center gap-2">
-          Join the empathy community{" "}
-          <ArrowUpRight className="bg-black text-white w-7 h-7 rounded-full p-1" />
+          Join the empathy community
+          <ArrowUpRight className="bg-black text-white w-7 h-7 rounded-full p-1 hidden md:block" />
         </span>
       </div>
     </section>

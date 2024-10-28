@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Products from "@/components/products/Products";
 import Shop from "@/components/shop/Shop";
 import SplashPop from "@/components/SplashPop";
+import Testimonials from "@/components/Testimonials";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -44,6 +45,7 @@ export default function Home() {
 
       <div className="w-[90%] mx-auto flex flex-col space-y-28">
         <Products />
+        <Testimonials />
       </div>
     </main>
   );

@@ -2,7 +2,8 @@
 @import "~slick-carousel/slick/slick-theme.css";
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Satisfy&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Courgette&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -22,8 +23,11 @@
   font-family: "Pacifico", "Satisfy", cursive;
 }
 
+.special-font {
+  font-family: "Playfair Display", serif;
+}
 .logos-text {
-  font-family: 'Courgette', cursive;
+  font-family: "Courgette", cursive;
 }
 h1,
 h2,
