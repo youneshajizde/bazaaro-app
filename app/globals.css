@@ -18,6 +18,10 @@
 }
 /* .logo-text {
   font-family: "Nunito", sans-serif !important; /* Add !important to enforce */
+/* Custom CSS */
+.clip-shape {
+  clip-path: polygon(0 0, 100% 10%, 100% 90%, 0% 100%);
+}
 
 .logo-text {
   font-family: "Pacifico", "Satisfy", cursive;

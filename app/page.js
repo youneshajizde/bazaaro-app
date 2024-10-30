@@ -1,8 +1,10 @@
 "use client";
 
 import Advertise from "@/components/Advertise";
+import Footer from "@/components/Footer";
 import Header from "@/components/header/Header";
 import Navbar from "@/components/Navbar";
+import Newsletter from "@/components/Newsletter";
 import Products from "@/components/products/Products";
 import Shop from "@/components/shop/Shop";
 import SplashPop from "@/components/SplashPop";
@@ -46,7 +48,9 @@ export default function Home() {
       <div className="w-[90%] mx-auto flex flex-col space-y-28">
         <Products />
         <Testimonials />
+        <Newsletter />
       </div>
+      <Footer />
     </main>
   );
 }
