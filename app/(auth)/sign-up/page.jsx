@@ -1,6 +1,5 @@
+"use client";
 import React from "react";
-import signUpImg from "@/public/assets/signup.webp";
-import Image from "next/image";
 import SignUpForm from "@/components/forms/SignUpForm";
 
 function SignUp() {
