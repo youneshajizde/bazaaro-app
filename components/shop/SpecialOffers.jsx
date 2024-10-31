@@ -16,14 +16,20 @@ function SpecialOffers({ data }) {
   };
 
   const items = data?.map((product, index) => (
-    <div key={index} className="card bg-white w-full  rounded-2xl relative p-2 h-full">
-      <Image
-        src={product?.images?.[0]?.url}
-        width={0}
-        height={0}
-        className="object-cover w-full h-[75%] rounded-2xl"
-        unoptimized
-      />
+    <div
+      key={index}
+      className="card bg-white w-full flex flex-col rounded-2xl relative p-2 h-[75%]"
+    >
+      <div className="h-[75%] rounded-2xl relative">
+        <Image
+          src={product?.images?.[0]?.url}
+          width={0}
+          height={0}
+          className="object-cover absolute w-full min-h-[55%] rounded-2xl"
+          unoptimized
+        />
+      </div>
+
       <div className="mt-3 flex flex-col space-y-4">
         <span className="w-20 flex justify-center hover:bg-black hover:text-white text-xs rounded-full border-[1px] px-2 py-1 border-black font-medium">
           {product?.tag}
