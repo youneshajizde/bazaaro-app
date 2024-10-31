@@ -2,6 +2,7 @@ import { categories } from "@/lib/constants";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import Link from "next/link";
 
 function Products() {
   const [products, setProducts] = useState();
@@ -31,32 +32,34 @@ function Products() {
   }, [selectedCat]);
 
   const items = products?.map((product) => (
-    <div className="flex flex-col ">
-      <div className=" w-full h-[450px] ">
-        <div className="relative h-[75%]">
-          <Image
-            src={product?.images?.[0]?.url}
-            width={1000}
-            height={1000}
-            className="absolute w-full h-full object-cover rounded-2xl"
-          />
-        </div>
+    <Link href={`/product/${product?.id}`}>
+      <div className="flex flex-col ">
+        <div className=" w-full h-[450px] ">
+          <div className="relative h-[75%]">
+            <Image
+              src={product?.images?.[0]?.url}
+              width={1000}
+              height={1000}
+              className="absolute w-full h-full object-cover rounded-2xl"
+            />
+          </div>
 
-        <div className="product-info mt-3 flex flex-col space-y-3">
-          <ul className="flex items-center gap-2">
-            <li className="bg-slate-400 rounded-full w-4 h-4"></li>
-            <li className="bg-blue-200 rounded-full w-4 h-4"></li>
-            <li className="bg-stone-500 rounded-full w-4 h-4"></li>
-          </ul>
-          <h1 className="font-medium text-lg">{product?.title}</h1>
+          <div className="product-info mt-3 flex flex-col space-y-3">
+            <ul className="flex items-center gap-2">
+              <li className="bg-slate-400 rounded-full w-4 h-4"></li>
+              <li className="bg-blue-200 rounded-full w-4 h-4"></li>
+              <li className="bg-stone-500 rounded-full w-4 h-4"></li>
+            </ul>
+            <h1 className="font-medium text-lg">{product?.title}</h1>
 
-          <span className="flex items-center gap-3">
-            <h1 className="text-sm font-medium">{product?.price}.00$</h1>
-            <h1 className="text-sm font-medium text-gray-400">230.00$</h1>
-          </span>
+            <span className="flex items-center gap-3">
+              <h1 className="text-sm font-medium">{product?.price}.00$</h1>
+              <h1 className="text-sm font-medium text-gray-400">230.00$</h1>
+            </span>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   ));
   const category = categories.map((cat, index) => (
     <li

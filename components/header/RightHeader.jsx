@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import img2 from "@/public/assets/whitee.jpg";
-import example from "@/public/assets/ex.jpg";
 import { supabase } from "@/lib/supabaseClient";
 import Slider from "react-slick";
 
