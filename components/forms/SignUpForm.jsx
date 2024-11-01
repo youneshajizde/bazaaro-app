@@ -9,10 +9,8 @@ import { signUpSchema } from "@/lib/signUpSchema";
 import CustomField from "../CustomField";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
-import { useDispatch } from "react-redux";
 
 function SignUpForm() {
-
   const form = useForm({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -55,16 +53,19 @@ function SignUpForm() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <CustomField
+            fieldType={"input"}
             name={"username"}
             label={"Username"}
             placeholder={"Jonas"}
           />
           <CustomField
+            fieldType={"input"}
             name={"email"}
             label={"Email"}
             placeholder={"Jonas@gmail.com"}
           />
           <CustomField
+            fieldType={"input"}
             name={"password"}
             label={"Password"}
             placeholder={"1234567"}
