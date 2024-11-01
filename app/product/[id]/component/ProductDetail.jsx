@@ -1,15 +1,22 @@
+"use client";
+
 import { Label } from "@/components/ui/label";
 import { colors, sizes } from "@/lib/constants";
 import { CreditCard, ShoppingCart, Star } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 import { RocketIcon } from "@radix-ui/react-icons";
-
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
+
 function ProductDetail() {
+  const [quantity, setQuantity] = useState(1);
+
+  const handleIncrease = () => setQuantity(quantity + 1);
+  const handleDecrease = () => setQuantity(quantity > 1 ? quantity - 1 : 1);
+
   return (
     <div className="flex flex-col justify-between h-full">
-      <div className="flex flex-col space-y-5">
+      <div className="p-details flex flex-col space-y-5">
         <h1 className="text-2xl font-medium">Misaria GR Black</h1>
         <h1 className="rounded-full border-[1px] border-black px-3 py-1 w-24 text-center text-sm">
           clothings
@@ -31,31 +38,53 @@ function ProductDetail() {
           </h1>
           <h1 className="text-sm text-gray-500 font-medium">Reviews(19)</h1>
         </span>
-        <span>
-          <Label className="text-md">Sizes</Label>
-          <div className="mt-3 flex items-center gap-2">
-            {sizes.map((size, index) => (
-              <span
-                key={index}
-                className="bg-stone-800 p-2 rounded-lg text-white text-xs font-medium"
-              >
-                {size}
-              </span>
-            ))}
+
+        <div className="flex items-center gap-5">
+          <span>
+            <Label className="text-md">Sizes</Label>
+            <div className="mt-3 flex items-center gap-2">
+              {sizes.map((size, index) => (
+                <span
+                  key={index}
+                  className="bg-stone-800 p-2 rounded-lg text-white text-xs font-medium"
+                >
+                  {size}
+                </span>
+              ))}
+            </div>
+          </span>
+          <span>
+            <Label className="text-md">Colors</Label>
+            <div className="mt-3 flex items-center gap-2">
+              {colors.map((color, index) => (
+                <div
+                  key={index}
+                  className={`h-6 w-6 border-gray-400 border-[2px] rounded-full bg-${color}-600`}
+                  title={color}
+                ></div>
+              ))}
+            </div>
+          </span>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <Label className="text-md">Quantity</Label>
+          <div className="flex items-center gap-2">
+            <Button
+              onClick={handleDecrease}
+              className="bg-gray-200 text-black px-3 py-1"
+            >
+              -
+            </Button>
+            <span className="text-lg font-medium">{quantity}</span>
+            <Button
+              onClick={handleIncrease}
+              className="bg-gray-200 text-black px-3 py-1"
+            >
+              +
+            </Button>
           </div>
-        </span>
-        <span>
-          <Label className="text-md">Colors</Label>
-          <div className="mt-3 flex items-center gap-2">
-            {colors.map((color, index) => (
-              <div
-                key={index}
-                className={`h-6 w-6 border-gray-400 border-[2px] rounded-full bg-${color}-600`}
-                title={color}
-              ></div>
-            ))}
-          </div>
-        </span>
+        </div>
       </div>
 
       <div className="flex items-center w-full gap-3">
