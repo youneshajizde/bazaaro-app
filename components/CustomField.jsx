@@ -8,8 +8,9 @@ import {
   FormMessage,
 } from "./ui/form";
 import { Input } from "./ui/input"; // Import from the correct path
+import { Textarea } from "./ui/textarea";
 
-function CustomField({ name, placeholder, label }) {
+function CustomField({ name, placeholder, label, fieldType }) {
   return (
     <FormField
       control={Form.control}
@@ -18,7 +19,11 @@ function CustomField({ name, placeholder, label }) {
         <FormItem>
           <FormLabel>{label}</FormLabel>
           <FormControl>
-            <Input placeholder={placeholder} {...field} />
+            {fieldType === "input" ? (
+              <Input placeholder={placeholder} {...field} />
+            ) : fieldType === "textarea" ? (
+              <Textarea placeholder={placeholder} {...field} />
+            ) : null}
           </FormControl>
           <FormMessage />
         </FormItem>
