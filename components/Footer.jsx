@@ -9,7 +9,9 @@ function Footer() {
       {/* Top Section (Hidden on small screens) */}
       <div className="w-full h-[15%] py-4 hidden sm:flex">
         <div className="w-[90%] mx-auto flex items-center justify-between">
-          <h1 className="text-3xl font-medium">2025</h1>
+          <h1 className="text-sm font-medium bg-black rounded-full text-white px-2 ">
+            2025
+          </h1>
           <h1 className="text-sm font-medium flex items-center gap-2">
             Back to top
             <MoveUp
@@ -31,7 +33,7 @@ function Footer() {
       </div>
 
       {/* Bottom Section: 4 Columns of Links and Logo */}
-      <div className="w-full flex py-10 border-t border-gray-300 bg-gray-100">
+      <div className="w-full flex py-10 ">
         <div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center lg:text-left">
           {/* Logo and Name */}
           <div className="flex flex-col gap-4 items-center lg:items-start">
