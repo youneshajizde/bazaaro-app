@@ -1,7 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import logo from "@/public/assets/log.png";
-import { MoveUp } from "lucide-react";
+import { Facebook, Instagram, MoveUp, Twitter } from "lucide-react";
+import Link from "next/link";
 
 function Footer() {
   return (
@@ -27,7 +28,7 @@ function Footer() {
         <p className="text-sm font-medium hidden sm:flex text-gray-600">
           Have a project in mind?
         </p>
-        <p className="font-bold text-[5rem] sm:text-[6rem] lg:text-[10rem] text-gray-200 leading-none">
+        <p className="title-text-style">
           LET'S TALK
         </p>
       </div>
@@ -44,6 +45,17 @@ function Footer() {
             <p className="text-sm">
               Discover the best deals and unique products on Bazaaro.
             </p>
+            <div className="flex gap-4 mt-2">
+              <Link href="#" aria-label="Facebook">
+                <Facebook color="#3b5998" size={24} />
+              </Link>
+              <Link href="#" aria-label="Twitter">
+                <Twitter color="#1DA1F2" size={24} />
+              </Link>
+              <Link href="#" aria-label="Instagram">
+                <Instagram color="#E1306C" size={24} />
+              </Link>
+            </div>
           </div>
 
           {/* Column 1 */}
