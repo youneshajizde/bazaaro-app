@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Newsletter from "@/components/Newsletter";
 import Products from "@/components/products/Products";
 import Shop from "@/components/shop/Shop";
+import Shopper from "@/components/Shopper";
 import SplashPop from "@/components/SplashPop";
 import Testimonials from "@/components/Testimonials";
 import { useEffect, useState } from "react";
@@ -37,13 +38,13 @@ export default function Home() {
 
   return (
     <main>
-      <div className="w-[90%] mx-auto flex flex-col space-y-28">
+      <div className="w-[90%] mx-auto flex flex-col space-y-10 md:space-y-20 lg:space-y-24">
         <Header />
         <Shop />
+        <Advertise />
       </div>
-      <Advertise />
-
-      <div className="w-[90%] mx-auto flex flex-col space-y-28">
+      <Shopper />
+      <div className="w-[90%] mx-auto flex flex-col space-y-10 md:space-y-20 lg:space-y-24">
         <Products />
         <Testimonials />
         <Newsletter />

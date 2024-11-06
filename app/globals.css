@@ -22,10 +22,16 @@
 .clip-semi-oval {
   clip-path: ellipse(100% 70% at 50% 100%);
 }
+
+.text-stroke-black {
+  -webkit-text-stroke: 2px black; /* Use only -webkit-text-stroke */
+}
 .logo-text {
   font-family: "Pacifico", "Satisfy", cursive;
 }
-
+html {
+  scroll-behavior: smooth !important;
+}
 .special-font {
   font-family: "Playfair Display", serif;
 }
@@ -108,5 +114,9 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  .title-text-style {
+    @apply text-[5rem] md:text-[7rem] lg:text-[9rem] text-gray-200 font-bold
   }
 }
