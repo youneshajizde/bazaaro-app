@@ -3,12 +3,39 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import Link from "next/link";
-
+import Slider from "react-slick";
 function Products() {
   const [products, setProducts] = useState();
   const [selectedCat, setSelectedCat] = useState("clothings");
-
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+    ],
+  };
   console.log("this is the current category", selectedCat);
+
   const getAllProducts = async () => {
     try {
       const { data, error } = await supabase
@@ -32,15 +59,16 @@ function Products() {
   }, [selectedCat]);
 
   const items = products?.map((product) => (
-    <Link href={`/product/${product?.id}`}>
-      <div className="flex flex-col ">
-        <div className=" w-full h-[450px] ">
+    <Link href={`/product/${product?.id}`} key={product?.id}>
+      <div className="flex flex-col">
+        <div className="w-full h-[450px]">
           <div className="relative h-[75%]">
             <Image
               src={product?.images?.[0]?.url}
               width={1000}
               height={1000}
               className="absolute w-full h-full object-cover rounded-2xl"
+              alt={product?.title}
             />
           </div>
 
@@ -61,24 +89,40 @@ function Products() {
       </div>
     </Link>
   ));
+
   const category = categories.map((cat, index) => (
     <li
-      onClick={(e) => setSelectedCat(e.target.innerText)}
+      onClick={() => setSelectedCat(cat)}
       key={index}
-      className={`rounded-full px-6 py-1 text-sm font-medium border-gray-600 border-[1px] hover:bg-yellow-300 cursor-pointer hover:border-black transition-all ${
-        selectedCat === cat ? "bg-yellow-300" : ""
+      className={`relative text-md md:text-lg font-medium cursor-pointer transition-colors duration-200  ${
+        selectedCat === cat ? "text-black" : "text-gray-300"
       }`}
     >
-      {cat}
+      <span className="relative z-10">
+        {cat}
+        <span
+          className={`absolute left-0 bottom-0 h-[2px] bg-black transition-all duration-300 transform ${
+            selectedCat === cat ? "w-full scale-x-100" : "scale-x-0"
+          } origin-left`}
+        />
+      </span>
     </li>
   ));
+
   return (
     <section className="mt-16">
-      <div className="flex items-center gap-5">
-        <h1 className="text-2xl font-semibold logos-text">Products</h1>
-        <ul className="flex items-center gap-3">{category}</ul>
+      <div className="flex flex-col">
+        <h1 className="text-[4rem] md:text-[7rem] lg:text-[6rem] text-gray-200 font-bold">
+          PRODUCTS
+        </h1>
+        <Slider
+          {...settings}
+          className="flex items-center w-[90%] md:w-[70%] lg:w-[60%]"
+        >
+          {category}
+        </Slider>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5  mt-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-8">
         {items}
       </div>
     </section>
